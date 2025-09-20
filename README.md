@@ -1,5 +1,6 @@
 # EdgeOS
 
+<<<<<<< HEAD
 ## Purpose for Fork
 
 This is a fork of the EdgeOS integration by [elad-bar](https://github.com/elad-bar/ha-edgeos/) While that author is busy, this integrates 2 important patches:
