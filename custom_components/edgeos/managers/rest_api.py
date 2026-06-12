@@ -311,7 +311,6 @@ class RestAPI:
                 data=credentials,
                 ssl=False,
                 headers={"Content-Type": "application/x-www-form-urlencoded"},
-                allow_redirects=False,
             ) as response:
                 all_cookies = self._session.cookie_jar.filter_cookies(response.url)
 
