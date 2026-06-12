@@ -1,14 +1,13 @@
 from __future__ import annotations
 
-from asyncio import sleep
-from datetime import datetime, timedelta
 import json
 import logging
 import sys
+from asyncio import sleep
+from datetime import datetime, timedelta
 from typing import Any
 
 from aiohttp import ClientSession, CookieJar
-
 from homeassistant.const import CONF_PASSWORD, CONF_USERNAME
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_create_clientsession
@@ -307,7 +306,13 @@ class RestAPI:
             if self._session.closed:
                 raise SessionTerminatedException()
 
-            async with self._session.post(url, data=credentials, ssl=False) as response:
+            async with self._session.post(
+                url,
+                data=credentials,
+                ssl=False,
+                headers={"Content-Type": "application/x-www-form-urlencoded"},
+                allow_redirects=False,
+            ) as response:
                 all_cookies = self._session.cookie_jar.filter_cookies(response.url)
 
                 for key, cookie in all_cookies.items():
